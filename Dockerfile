@@ -14,7 +14,10 @@ COPY utility_namespace_dns.sh .
 RUN chmod +x ./utility_namespace_dns.sh
 RUN ./utility_namespace_dns.sh
 
-RUN mkdir -p /opt/backup
-RUN mkdir -p /etc/redis
+RUN mkdir -p /opt/backup && chown redis:redis /opt/backup
+RUN mkdir -p /etc/redis && chown redis:redis /etc/redis
 
-CMD [ "redis-server", "/etc/redis/redis.conf" ]
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+EXPOSE 6379
+CMD ["redis-server"]
