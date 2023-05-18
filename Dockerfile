@@ -14,7 +14,7 @@ COPY utility_namespace_dns.sh .
 RUN chmod +x ./utility_namespace_dns.sh
 RUN ./utility_namespace_dns.sh
 
-RUN mkdir -p /etc/redis/conf.d && chown redis:redis -r /etc/redis
+RUN mkdir -p /etc/redis/conf.d && chown redis:redis /etc/redis && chown redis:redis /etc/redis/conf.d
 ENV PATH="${PATH}:/usr/local/bin"
 
 ENTRYPOINT ["docker-entrypoint.sh"]
