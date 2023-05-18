@@ -16,6 +16,7 @@ RUN ./utility_namespace_dns.sh
 
 RUN mkdir -p /etc/redis/conf.d && chown redis:redis /etc/redis && chown redis:redis /etc/redis/conf.d
 ENV PATH="${PATH}:/usr/local/bin"
+RUN ln -s /var/run /run
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
